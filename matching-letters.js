@@ -7,6 +7,8 @@ function countCorrectCharacters(correctWord, guess) {
     /* 
     Tengo que buscar qué coincidencia hay entre las dos palabras, no solo en las letras, sino también en la posicición.
 
+    En primer lugar compruebo que la palabra propuesta tenga la misma cantidad de caracteres que la palabra a adivinar
+
     Puedo tratar las dos palabras como arrays, pero solo es necesario recorrerlo una vez, ya que no me interesa saber si una letra se encuentra en cualquier lugar de la palabra con la que la comparo, sino si coincide en la misma posición
     
     Es decir para el primer caso ("dog", "car"): 
@@ -21,44 +23,49 @@ function countCorrectCharacters(correctWord, guess) {
 
     //console.log(guess.length);
 
-    const guessW = Array.from(guess); //genero un array de la palabra que voy a comprobar
-    let matches = 0; //inicializo una variable para almacenar la cantidad de coincidencias
-    let matchesW = []; //inicializo un array para almacenar las letras que han coincidido
-    let output; //me reservo una variable para guardar el mensaje de salida
+    if (guess.length == correctWord.length) {
+
+        const guessW = Array.from(guess); //genero un array de la palabra que voy a comprobar
+        let matches = 0; //inicializo una variable para almacenar la cantidad de coincidencias
+        let matchesW = []; //inicializo un array para almacenar las letras que han coincidido
+        let output; //me reservo una variable para guardar el mensaje de salida
 
 
-    guessW.forEach(myFunction);
+        guessW.forEach(compareWords);
 
-    function myFunction(item, index) {
-        //console.log(item, index);
-        if (item == correctWord[index]) {
-            matches++;
-            matchesW.push(item);
+        function compareWords(item, index) {
+            //console.log(item, index);
+            if (item == correctWord[index]) {
+                matches++;
+                matchesW.push(item);
+            }
         }
+
+        switch (matches) {
+            case 0:
+                output = "0 (No coincide ninguna letra en la misma posición)"
+                break
+            case 1:
+                output = `1 ("${matchesW[0]}")`
+                break
+            case 2:
+                output = `2 ("${matchesW[0]}") y ("${matchesW[1]}")`
+                break
+            case 3:
+                output = "3 (Correcto!)"
+                break
+        }
+
+
+        //console.log(matches, matchesW);
+        console.log(output);
+    } else {
+        console.log("La palabra debe tener 3 caracteres");
     }
-
-    switch (matches) {
-        case 0:
-            output = "0 (No coincide ninguna letra en la misma posición)"
-            break
-        case 1:
-            output = `1 ("${matchesW[0]}")`
-            break
-        case 2:
-            output = `2 ("${matchesW[0]}") y ("${matchesW[1]}")`
-            break
-        case 3:
-            output = "3 (Correcto!)"
-            break
-    }
-
-
-    //console.log(matches, matchesW);
-    console.log(output);
 }
 
 
-countCorrectCharacters("dog", "car"); //0 (No letters are in the correct position)
+countCorrectCharacters("dog", "pepe"); //0 (No letters are in the correct position)
 countCorrectCharacters("dog", "god"); //1 ("o")
 countCorrectCharacters("dog", "cog"); //2 ("o" and "g")
 countCorrectCharacters("dog", "cod"); //1 ("o")
