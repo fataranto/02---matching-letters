@@ -7,18 +7,16 @@ function countCorrectCharacters(correctWord, guess) {
     /* 
     Tengo que buscar qué coincidencia hay entre las dos palabras, no solo en las letras, sino también en la posicición.
 
-    Puedo tratar las dos palabras como arrays, pero solo es necesario recorrerlo una vez, ya que no me interesa saber si una letra en cualquier lugar de la palabra con la que la comparo, sino si coincide en la misma posición
+    Puedo tratar las dos palabras como arrays, pero solo es necesario recorrerlo una vez, ya que no me interesa saber si una letra se encuentra en cualquier lugar de la palabra con la que la comparo, sino si coincide en la misma posición
     
     Es decir para el primer caso ("dog", "car"): 
     la "c" coincide con la "d"?:
     la "a" coincide con la "o"?;
     la "r" coincide con la "g"?;
 
-    Según vaya encointrando coincidencias las iré sumando en una variable y además gardaré las letras que coincidan
+    Según vaya encontrando coincidencias las iré sumando en una variable y además gardaré las letras que coincidan
 
     En el caso de que no coincida ninguna o coincidan las 3 letras daré un mensaje, en relación, de lo contrario, mostraré el total de coincidencias y las letras que han coincidido.
-
-
     */
 
     //console.log(guess.length);
