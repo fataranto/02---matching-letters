@@ -28,7 +28,7 @@ function countCorrectCharacters(correctWord, guess) {
         const guessW = Array.from(guess); //genero un array de la palabra que voy a comprobar
         let matches = 0; //inicializo una variable para almacenar la cantidad de coincidencias
         let matchesW = []; //inicializo un array para almacenar las letras que han coincidido
-        let output; //me reservo una variable para guardar el mensaje de salida
+        //let output; //me reservo una variable para guardar el mensaje de salida
 
 
         guessW.forEach(compareWords);
@@ -41,7 +41,8 @@ function countCorrectCharacters(correctWord, guess) {
             }
         }
 
-        switch (matches) {
+
+/*         switch (matches) {
             case 0:
                 output = "0 (No coincide ninguna letra en la misma posición)"
                 break
@@ -54,18 +55,21 @@ function countCorrectCharacters(correctWord, guess) {
             case 3:
                 output = "3 (Correcto!)"
                 break
-        }
+        } */
 
 
-        //console.log(matches, matchesW);
-        console.log(output);
+        console.log(matches, matchesW);
+        
+        //console.log(output);
+        return matches, matchesW; //podría retornar también output si me interesase llevarme el mensaje
     } else {
-        console.log("La palabra debe tener 3 caracteres");
+       // console.log("La palabra debe tener 3 caracteres");
+        return console.error("La palabra debe tener 3 caracteres");
     }
 }
 
-
-countCorrectCharacters("dog", "pepe"); //0 (No letters are in the correct position)
+countCorrectCharacters("dog", "elephant");
+countCorrectCharacters("dog", "cat"); //0 (No letters are in the correct position)
 countCorrectCharacters("dog", "god"); //1 ("o")
 countCorrectCharacters("dog", "cog"); //2 ("o" and "g")
 countCorrectCharacters("dog", "cod"); //1 ("o")
