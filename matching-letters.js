@@ -58,12 +58,19 @@ function countCorrectCharacters(correctWord, guess) {
         } */
 
 
-        console.log(matches, matchesW);
+        
         
         //console.log(output);
-        return matches, matchesW; //podría retornar también output si me interesase llevarme el mensaje
+        if (matchesW.length == 0){
+            console.log(matches);
+            return matches;
+        } else {
+            console.log(matches, matchesW);
+            return matches, matchesW; //return matches, matchesW; //podría retornar también output si me interesase llevarme el mensaje 
+        }
+
+        
     } else {
-       // console.log("La palabra debe tener 3 caracteres");
         return console.error("La palabra debe tener 3 caracteres");
     }
 }
